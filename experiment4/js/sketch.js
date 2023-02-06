@@ -7,61 +7,134 @@
 
 // Constants - User-servicable parts
 // In a longer project I like to put these in a separate file
-const VALUE1 = 1;
-const VALUE2 = 2;
+let audio;
+let start = false;
+var img;
+var song;
+var fft;
+var button;
+var mic;
+let startButton;
 
-// Globals
-let myInstance;
-let canvasContainer;
+col = {
+      r:255,
+      g:0,
+      b:0
+    };
 
-class MyClass {
-    constructor(param1, param2) {
-        this.property1 = param1;
-        this.property2 = param2;
-    }
+function toggleSong() {
+  if (song.isPlaying()) {
+    song.pause();
+  } else {
+    song.play();
+  }
 
-    myMethod() {
-        // code to run when method is called
-    }
 }
 
-// setup() function is called once when the program starts
+function preload() {
+  song = loadSound('pianoMan.mp3');
+  img = loadImage('billy.jpg');
+}
 function setup() {
-    // place our canvas, making it fit our container
-    canvasContainer = $("#canvas-container");
-    let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
-    canvas.parent("canvas-container");
-    // resize canvas is the page is resized
-    $(window).resize(function() {
-        console.log("Resizing...");
-        resizeCanvas(canvasContainer.width(), canvasContainer.height());
-    });
-    // create an instance of the class
-    myInstance = new MyClass(VALUE1, VALUE2);
+  createCanvas(600, 400);
+  image(img, 600, 400);
+  angleMode(DEGREES);
+  background(238,235,219);
+  //song.play();
+  button = createButton('toggle');
+  button.mousePressed(toggleSong);
+  fft = new p5.FFT(0.5, 64);
+  w = width / 64;
+  
 
-    var centerHorz = windowWidth / 2;
-    var centerVert = windowHeight / 2;
+  mic = new p5.AudioIn();
+  mic.start();
+
+  //fill(0);
+
+  textAlign(CENTER, CENTER);
+  text("Click Toggle to start", width/2, height/2);
+  // startButton = createButton('click toggle to start);
+  // //startButton.position(100,100);
+  // startButton.mousePressed(playSong);
+
+}
+col.r= 40;
+col.g= 40;
+col.b= 40;
+function changeBackground() {
+
+  //background change
+  if (col.g > 39 )  {
+    col.g= col.g+1;
+    col.b= col.b+1;
+  }
+  if (col.g>75){
+    col.g= 20;
+    col.b= 20;
+  }
 }
 
-// draw() function is called repeatedly, it's the main animation loop
 function draw() {
-    background(220);    
-    // call a method on the instance
-    myInstance.myMethod();
+  if (!start) {
+    return;
+  }
+  
+  background(0);
 
-    // Put drawings here
-    var centerHorz = canvasContainer.width() / 2 - 125;
-    var centerVert = canvasContainer.height() / 2 - 125;
-    fill(234, 31, 81);
-    noStroke();
-    rect(centerHorz, centerVert, 250, 250);
-    fill(255);
-    textStyle(BOLD);
-    textSize(140);
-    text("p5*", centerHorz + 10, centerVert + 200);
+  if(typeof fft != "undefined") {
+    background(col.r,col.g,col.b);
+    var spectrum = fft.analyze();
+  
+  
+  stroke(255);
+
+  noFill();
+  for (i = 0; i < spectrum.length; i++) {
+    var amp = spectrum[i];
+    var y = map(amp, 0, 256, height, 0);
+    strokeWeight(3);
+    rect(i * w, y, w * i, height - y);
+  }
+
+  // var vol = mic.getLevel();
+  // fill(255, 0, 0);
+  // ellipse(width / 2, height / 2, 200, vol * 200);  
+  // fill(0);
+  // ellipse(width / 2, height / 2, 100, vol * 200);
+  }
 }
 
-// mousePressed() function is called once after every time a mouse button is pressed
 function mousePressed() {
-    // code to run when mouse is pressed
+  start = true;
 }
+function playSong() {
+  song.play();
+}
+function getColors(startColor, endColor, n) {
+  let colors = [];
+  for (let i = 1; i <= n; i++) {
+    let c = lerpColor(startColor, endColor, i/n);
+    colors.push(c);
+  }
+  return colors;
+}
+
+
+var intervalId = window.setInterval(function(){
+
+  if (col.g > 39 )  {
+    col.r= col.r+1;
+    col.g= col.g+1;
+    col.b= col.b+1;
+  }
+  if (col.g>75){
+    col.r= 20;
+    col.g= 20;
+    col.b= 20;
+  }
+}, 5000);
+
+
+//setInterval(changeBackground,5000);
+// var intervalId = window.setInterval(changeBackground(), 5000);
