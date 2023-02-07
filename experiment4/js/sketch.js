@@ -7,6 +7,10 @@
 
 // Constants - User-servicable parts
 // In a longer project I like to put these in a separate file
+
+//Credits: https://editor.p5js.org/Ruyi_Chen/sketches/H1UJM_0nQ
+//Song Used: Billy Joel - Piano Man https://www.youtube.com/watch?v=QwVjTlTdIDQ 
+
 let audio;
 let start = false;
 var img;
@@ -15,86 +19,78 @@ var fft;
 var button;
 var mic;
 let startButton;
+let vid;
+let canvas;
 
-col = {
-      r:255,
-      g:0,
-      b:0
-    };
 
 function toggleSong() {
   if (song.isPlaying()) {
     song.pause();
+    vid.pause();
   } else {
     song.play();
+    vid.loop();
   }
 
 }
 
 function preload() {
   song = loadSound('pianoMan.mp3');
-  img = loadImage('billy.jpg');
+  //img = loadImage('billy.jpg');
+  
 }
 function setup() {
-  createCanvas(600, 400);
-  image(img, 600, 400);
+  canvas = createCanvas(1280, 720);
+  canvas.position(100,1050);
+  canvas.style('z-index', 1);
+  
   angleMode(DEGREES);
-  background(238,235,219);
+  //background(238,235,219);
   //song.play();
-  button = createButton('toggle');
-  button.mousePressed(toggleSong);
+  //button = createButton('toggle');
+  //button.mousePressed(toggleSong);
   fft = new p5.FFT(0.5, 64);
   w = width / 64;
-  
 
+  vid = createVideo('cassette.mp4');
+  
+  vid.style('z-index', 0);
+  vid.position(100,1050);
+  
   mic = new p5.AudioIn();
   mic.start();
 
   //fill(0);
 
-  textAlign(CENTER, CENTER);
-  text("Click Toggle to start", width/2, height/2);
+  
+  //vid.position(0,0);
+  
   // startButton = createButton('click toggle to start);
   // //startButton.position(100,100);
   // startButton.mousePressed(playSong);
 
 }
-col.r= 40;
-col.g= 40;
-col.b= 40;
-function changeBackground() {
-
-  //background change
-  if (col.g > 39 )  {
-    col.g= col.g+1;
-    col.b= col.b+1;
-  }
-  if (col.g>75){
-    col.g= 20;
-    col.b= 20;
-  }
-}
 
 function draw() {
-  if (!start) {
+  if (start) {
     return;
   }
-  
-  background(0);
-
+  //image(img, 0, 0);
+  //background('rgba(0,255,0, 1)');
+  clear();
   if(typeof fft != "undefined") {
-    background(col.r,col.g,col.b);
+    //background(col.r,col.g,col.b);
     var spectrum = fft.analyze();
   
   
-  stroke(255);
+  stroke(random(255));
 
-  noFill();
+  //noFill();
   for (i = 0; i < spectrum.length; i++) {
     var amp = spectrum[i];
-    var y = map(amp, 0, 256, height, 0);
+    var y = map(amp, 0, 356, height, 0);
     strokeWeight(3);
-    rect(i * w, y, w * i, height - y);
+    line(i * w, y, w * i, height);
   }
 
   // var vol = mic.getLevel();
@@ -106,35 +102,27 @@ function draw() {
 }
 
 function mousePressed() {
-  start = true;
+  if(start)
+    toggleSong();
+  start = !start;
+  
 }
 function playSong() {
   song.play();
 }
-function getColors(startColor, endColor, n) {
-  let colors = [];
-  for (let i = 1; i <= n; i++) {
-    let c = lerpColor(startColor, endColor, i/n);
-    colors.push(c);
-  }
-  return colors;
+
+var loader = document.querySelector(".loader");
+document.getElementById("audiofile").onchange = function(event) {
+    if(event.target.files[0]) {
+        if(typeof song != "undefined") { // Catch already playing songs
+            song.disconnect();
+            song.stop();
+            clear();
+        }
+
+        // Load our new song
+        song = loadSound(URL.createObjectURL(event.target.files[0]));
+        //song.play();
+        //loader.classList.add("loading");
+    }
 }
-
-
-var intervalId = window.setInterval(function(){
-
-  if (col.g > 39 )  {
-    col.r= col.r+1;
-    col.g= col.g+1;
-    col.b= col.b+1;
-  }
-  if (col.g>75){
-    col.r= 20;
-    col.g= 20;
-    col.b= 20;
-  }
-}, 5000);
-
-
-//setInterval(changeBackground,5000);
-// var intervalId = window.setInterval(changeBackground(), 5000);
