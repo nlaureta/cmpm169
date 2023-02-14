@@ -275,27 +275,27 @@ function main() {
     });
   }
   //bear
-  {
-    const mtlLoader = new MTLLoader();
-    const objLoader = new OBJLoader();
-    mtlLoader.load('resources/obj/Bear/bear.mtl', (mtl) => {
-      mtl.preload();
-      objLoader.setMaterials(mtl);
-      objLoader.load('resources/obj/Bear/bear.obj', (bear) => {
-        scene.add(bear);
-        bear.traverse(function (node) {
-          if (node.isMesh) {
-            node.castShadow = true;
-          }
-        })
-        bear.scale.set(45, 45, 45)
-        bear.translateY(95);
-        bear.translateX(-160);
-        bear.translateZ(408);
-        bear.rotateY(180);
-      });
-    });
-  }
+  // {
+  //   const mtlLoader = new MTLLoader();
+  //   const objLoader = new OBJLoader();
+  //   mtlLoader.load('resources/obj/Bear/bear.mtl', (mtl) => {
+  //     mtl.preload();
+  //     objLoader.setMaterials(mtl);
+  //     objLoader.load('resources/obj/Bear/bear.obj', (bear) => {
+  //       scene.add(bear);
+  //       bear.traverse(function (node) {
+  //         if (node.isMesh) {
+  //           node.castShadow = true;
+  //         }
+  //       })
+  //       bear.scale.set(45, 45, 45)
+  //       bear.translateY(95);
+  //       bear.translateX(-160);
+  //       bear.translateZ(408);
+  //       bear.rotateY(180);
+  //     });
+  //   });
+  // }
   //fireflies
   let fireflies = [];
   for (let i = 1; i < 4; i++) {
