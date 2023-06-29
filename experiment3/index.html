@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment 3 - Generative Methods</title>
+	<title>Experiment 4 - Images, Video & Sound Art</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -13,15 +13,18 @@
 	<link rel="stylesheet" type="text/css" href="../css/site.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
-	
+
 
 	<!-- Load jQuery library -->
 	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 	<!-- Load p5.js library -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
 
-	
-    <!-- Generative Design Dependencies here -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
+
+	<!-- Generative Design Dependencies here -->
     <!-- GG Bundled -->
     <script src="https://cdn.jsdelivr.net/gh/generative-design/Code-Package-p5.js@master/libraries/gg-dep-bundle/gg-dep-bundle.js"></script>
     <!-- Opentype -->
@@ -34,41 +37,39 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
-    
-
+	
 	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
 	<!-- Use me for a JavaScript OOP Project -->
 	<script type="text/javascript" src="./js/project.js" DEFER></script>
 	<!-- Use me for a p5.js project -->
 	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
 
-	
 </head>
 <body>
-	
 	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
 	<main id="content">
 		<section>
-			<h1>Experiment 3 - Generative Methods</h1>
+			<h1>Experiment 4 - Images, Video & Sound Art</h1>
 			<div class="minor-section">
 				<h2>Imitate</h2>
 				<p>To develop artistic creativity in coding, it can be helpful to start by studying and learning from existing examples. This might involve reviewing code written by others, analyzing successful techniques, or even copying and modifying code to better understand how it works. By imitating and learning from existing techniques and strategies, we can gain a better understanding of what has been done before and what is possible, and identify opportunities for improvement and innovation.</p>
 				<p>What code did you start with? (You don't need to provide the code itself, but where did you start?) Document this step briefly.</p>
-				<b>&emsp; I started with a Generative Design found online. I would imitate it's sketch.js and it's dependencies from index.</b>
+				<b>&emsp; For sound I wanted an audio visualizer. I imitated an audio visualizer I found online through the p5js</b>
 			</div>
 
 			<div class="minor-section">
 				<h2>Integrate</h2>
 				<p>After learning from existing techniques and strategies, we can build upon that foundation by combining elements from different sources. This might involve combining elements from different programming languages, using libraries or frameworks in new ways, or bringing together techniques from different fields or disciplines. By integrating and combining elements from different sources, we can create something new and unique.</p>
 				<p>How did you extend the code or combine with another technique to make something new? Document this step.</p>
-				<b>&emsp; I integrated color switching and modified mouse release function. I also integrated a color picker to change either lines or circle color.</b>
+				<b>&emsp; I put in a preloaded song of my choice. 
+					I then added a file reader so mp3 audio files of the user’s choice can be uploaded and played. I then changed the line colors of the visualizer to a “flashy white”</b>
 			</div>
 
 			<div class="minor-section">
 				<h2>Innovate</h2>
 				<p>Finally, we can introduce new or original ideas to our coding process by thinking creatively and pushing the boundaries. This might involve developing entirely new techniques or approaches, or using existing techniques in new and creative ways. By innovating and introducing new ideas, we can create art that is truly groundbreaking.</p>
 				<p>How did you use the code as a jumping off point to create something truly unique and novel? Document this step thoroughly.</p>
-				<b>&emsp; Instead of the randomized line patterns forming top and bottom from each other, they now spin around the circle creating a circular pattern.</b>
+				<b>&emsp; I decided to add an image as the background but went with a video instead. I changed the visualizer to project in lines instead. I then removed the toggle button and made it as mousePressed instead for pause and play. Final result is how I wanted it to be which was a cassette audio visualizer.</b>
 			</div>
 
 			<div class="minor-section">
@@ -78,35 +79,53 @@
 					<li>What part of the project you contributed</li>
 					<b>&emsp; Worked on this assignment alone.</b>
 					<li>A reflection on your work and the work of the team</li>
-					<b>&emsp; Mess around and find out.</b>
+					<b>&emsp; Overall, I created what I wanted to create but I feel I could’ve added more such as built-in p5js sounds.</b>
 					<li>Brief highs and lows</li>
-					<b>&emsp;Highs: Made a unique circle pattern with the given line pattern.</b>
-					<b>&emsp;Lows: None.</b>
+					<b>&emsp; Highs: Seeing cool sound arts in p5js. Lows: None</b>
 				</ul>
-
-				
 			</div>
-			<h2><center>Results</center></h2>
-			<ul>
-	 <li>MOUSE</li>
-	 <dl>left click hold: change color to color picker</dl>
-	 <li>KEYS</li>
-	 <dl>1: randomize color</dl>
-	 <dl>2: color circle and line blue</dl>
-	 <dl>3: color cirlce and line green</dl>
-	 <dl>4: color circle and line red</dl>
-	 <dl>5: color circle and line yellow</dl>
-	 <dl>6: color circle and line from color picker</dl>
-	 <dl>0: color circle and line black</dl>
-	 <dl>color picker right side</dl>
-	</ul>
+
+			<div class="minor-section">
+				<h2>Results</h2>
+				<ul>
+					<p>Click anywhere to play or pause. If a song has been uploaded click anywhere again. File upload on right side.</p>
+				   </ul>
+			</div>
 		</section>
 		<nav id="links">
 			<!-- Put links to other pages (including the homepage) here. -->
 		</nav>
 	</main>
 </body>
-<div>
-	
-</div>
 </html>
+
+<!-- <label for="audioFileChooser">Upload an audio file: </label><br><br>
+<input  id="audioFileChooser" type="file" onchange="getFileData(this.files);"> -->
+
+<input style="
+  				padding-left:5px;
+  				border: 1px solid #4169E1;
+  	    	border-radius: 5px;
+									bottom: 45px;
+  	    	box-shadow: 0 0 5px 3px #4169E1; " id="audiofile" controls type="file"/>
+
+<!-- <script>
+	function readFile(files) {
+		var fileReader = new FileReader();
+			fileReader.readAsArrayBuffer(files[0]);
+			fileReader.onload = function(e) {
+				playAudioFile(e.target.result);
+				console.log(("Filename: '" + files[0].name + "'"), ( "(" + ((Math.floor(files[0].size/1024/1024*100))/100) + " MB)" ));
+			}
+	}
+	function playAudioFile(file) {
+		var context = new window.AudioContext();
+			context.decodeAudioData(file, function(buffer) {
+				var source = context.createBufferSource();
+					source.buffer = buffer;
+					source.loop = false;
+					source.connect(context.destination);
+					source.start(0); 
+			});
+	}
+</script> -->

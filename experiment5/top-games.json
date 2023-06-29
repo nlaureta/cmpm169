@@ -1,0 +1,16 @@
+{
+    "Minecraft": { "name": "Minecraft", "count": 238},
+    "GTA5": { "name": "GTA5", "count": 150},
+    "Tetris": { "name": "Tetris", "count": 100},
+    "Wii Sports": { "name": "Wii Sports", "count": 82},
+    "PUBG": { "name": "PUBG", "count": 70},
+    "Super Mario Bros": { "name": "Super Mario Bros", "count": 58},
+    "Pokemon Red": { "name": "Pokemon Red", "count": 47},
+    "Mario Kart 8": { "name": "Mario Kart 8", "count": 45},
+    "Wii Fit": { "name": "Wii Fit", "count": 43},
+    "Pac-Man": { "name": "Pac-Man", "count": 40},
+    "Red Dead Redemption 2": { "name": "Red Dead Redemption 2", "count": 38},
+    "Mario Kart Wii": { "name": "Mario Kart Wii", "count": 37},
+    "Terraria": { "name": "Terraria", "count": 35},
+    "Animal Crossing: New Horizons": { "name": "Animal Crossing: New Horizons", "count": 33}
+}

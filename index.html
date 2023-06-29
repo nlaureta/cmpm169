@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- This title is used for tabs and bookmarks -->
-	<title>MyName's Homepage</title>
+	<title>Nathan's Homepage</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
   <meta charset="UTF-8" />
@@ -15,16 +14,35 @@
 	<!-- Link to javascript file - DEFER waits until all elements are rendered -->
 	<script type="text/javascript" src="./js/experiment.js"></script>
 </head>
-<body>
+<body style = "background-color: lightpink;">
 	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
 	<main id="content">
 		<section>
-			<h1>MyName's Homepage</h1>
-			<div class="minor-section">
+			<h1 class = "title has-text-centered">Nathan's Experiments</h1>
+			<div class="minor-section has-text-centered">
 					<!-- Note that all filenames use lowercase and no spaces -->
-					<img class="cat-photo" src="./img/cute-grey-kitten.jpg">
-					<h2>About Me</h2>
-					<p>Tell us about yourself. Add photos. Customize this. Go crazy.</p>
+					<!-- <img class="cat-photo center" src="./img/cute-grey-kitten.jpg"> -->
+					<button class="button">
+						<a href="https://nlaureta.github.io/cmpm169/AboutThis/index.html">About this</a>
+					</button>
+					<h3 class="has-text-centered subtitle">Collection of my experiments from cmpm169</h3>
+					<p>Click The Images To View</p>
+					
+					<a href = "https://nlaureta.github.io/cmpm169/experiment1/">
+						<img src="images/experiment1.png" width ="420" height ="500"/>
+					</a>
+					<a href = "https://nlaureta.github.io/cmpm169/experiment2/">
+						<img src="images/experiment2.png" width ="300"/>
+					</a>
+					<a href = "https://nlaureta.github.io/cmpm169/experiment3/">
+						<img src="images/experiment3.png" width ="540" height ="500"/>
+					</a>
+					<a href = "https://nlaureta.github.io/cmpm169/experiment4/">
+						<img src="images/experiment4.png" width ="480" height ="500"/>
+					</a>
+					<a href = "https://nlaureta.github.io/cmpm169/experiment5/">
+						<img src="images/experiment5.png" width ="540" height ="500"/>
+					</a>
 			</div>
 
 		</section>
@@ -33,4 +51,5 @@
 		</nav>
 	</main>
 </body>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </html>

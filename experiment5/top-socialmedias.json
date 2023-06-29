@@ -1,0 +1,18 @@
+{
+    "Facebook": { "name": "Facebook", "count": 2912},
+    "Youtube": { "name": "Youtube", "count": 2562},
+    "WhatsApp": { "name": "WhatsApp", "count": 2000},
+    "Instagram": { "name": "Instagram", "count": 1452},
+    "WeChat": { "name": "WeChat", "count": 1268},
+    "TikTok": { "name": "TikTok", "count": 1000},
+    "FacebookMessenger": { "name": "FacebookMessenger", "count": 1000},
+    "TikTokChina": { "name": "TikTokChina", "count": 613},
+    "SnapChat": { "name": "SnapChat", "count": 589},
+    "Kuaishou": { "name": "Kuaishou", "count": 578},
+    "weibo": { "name": "weibo", "count": 573},
+    "QQ": { "name": "QQ", "count": 552},
+    "Telegram": { "name": "Telegram", "count": 550},
+    "Twitter": { "name": "Twitter", "count": 465},
+    "Pinterest": { "name": "Pinterest", "count": 431}
+  }
+  
